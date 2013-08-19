@@ -1,0 +1,506 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: contesthopper\n"
+"POT-Creation-Date: 2012-11-19 13:57+0100\n"
+"PO-Revision-Date: 2012-11-19 14:20+0100\n"
+"Last-Translator: \n"
+"Language-Team: Webikon.sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: g:\\Web\\sandbox\\wp\\wp-content\\plugins\\contest-"
+"hopper\n"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/contest-widget.php:9
+msgid "ContestHopper widget"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/contest-widget.php:35
+msgid "Contest:"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/contest-widget.php:275
+msgid "Powered by:"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:56
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:59
+msgid "Description"
+msgstr "Popis"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:64
+msgid "Contest Headline"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:65
+msgid "A brief summary of your contest, e.g. Win $25 to spend in the store"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:72
+msgid "Media"
+msgstr "Média"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:74
+msgid "No Media"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:75
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:90
+msgid "Image"
+msgstr "Obrázok"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:76
+msgid "Custom Video"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:77
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:108
+msgid "Youtube Video"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:98
+msgid "Video"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:109
+msgid "Link to youtube video, e.g. http://www.youtube.com/watch?v=oHg5SJ_RHA0"
+msgstr ""
+"Odkaz na YouTube video, napr. http://www.youtube.com/watch?v=oHg5SJ_RHA0"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:115
+msgid "Contest Description"
+msgstr "Popis súťaže"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:116
+msgid "Describe your contest and the prize that you will giveaway."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:123
+msgid "Disclamer & Rules"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:128
+msgid "Disclaimer"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:135
+msgid "Rules"
+msgstr "Pravidlá"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:144
+msgid "Design"
+msgstr "Dizajn"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:147
+msgid "Text"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:152
+msgid "Headline Color"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:159
+msgid "Headline Font"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:182
+msgid "Description Color"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:189
+msgid "Description Font"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:212
+msgid "Typekit ID"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:213
+msgid "Enter your Typekit ID. This will override the fonts above."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:219
+msgid "Background"
+msgstr "Pozadie"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:224
+msgid "Background Color"
+msgstr "Farba pozadia"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:230
+msgid "Background Effects"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:232
+msgid "None"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:233
+msgid "Noise"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:241
+msgid "Enable Container"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:242
+msgid "A container is a wrapper that will encapsulate your widget."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:248
+msgid "Container Color"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:254
+msgid "Widget Size"
+msgstr "Veľkosť widgetu"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:256
+msgid "size1"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:257
+msgid "size2"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:258
+msgid "size3"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:261
+msgid "what should be here? widget size is based on parent element"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:269
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:272
+msgid "Widget Settings"
+msgstr "Nastavenia widgetu"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:276
+msgid "Social Buttons"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:277
+msgid ""
+"Select the checkboxes above to display social share buttons after you "
+"capture an email."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:290
+msgid "Display Name Field"
+msgstr "Zobraziť pole pre meno"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:291
+msgid "Asks for participants first and last name after email submit."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:297
+msgid "Display Referral Link"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:298
+msgid "The referral link encourages participants to share."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:304
+msgid "Display Countdown Field"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:311
+msgid "Thank You or Incentive Message"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:312
+msgid "Thank you email message after participant has subscribed."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:324
+msgid "Double Opt-In"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:331
+msgid "Entries Per Referral"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:332
+msgid ""
+"The number of entries you want participant to receive when referring another "
+"user."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:339
+msgid "Number Of Winners"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:346
+msgid "Automatically Select Winner"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:347
+msgid "Winner will be selected in a random drawing using random.org."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:353
+msgid "Save Participants To"
+msgstr "Uložiť účastníkov"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:376
+msgid "Aweber Settings"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:382
+msgid "Authorization Code"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:383
+msgid "Get your authorization code here"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:389
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:407
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:430
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:460
+msgid "List"
+msgstr "Zoznam"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:395
+msgid "MailChimp Settings"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:401
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:419
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:442
+msgid "API Key"
+msgstr "API kľúč"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:413
+msgid "Campaign Monitor Settings"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:425
+msgid "Client"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:436
+msgid "Get Reponse Settings"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:448
+msgid "Campaign"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:454
+msgid "Constant Contact Settings"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:466
+msgid "Timing"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:470
+msgid "Time zone"
+msgstr "Časová zóna"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:519
+msgid "Start Date & Time"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:526
+msgid "End Date & Time"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:535
+msgid "Publish"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:541
+msgid "Live Preview"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:727
+msgid "Missing input type:"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:730
+msgid "Save All Changes"
+msgstr "Uložiť zmeny"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:926
+msgid "Pick a color"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1075
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1120
+msgid "Media Library"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1208
+msgid "Error connecting application, unknown contest."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1214
+msgid "Empty auth code. Application disconnected."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1228
+msgid "App connected."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1231
+msgid "Error connecting app."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1342
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1430
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1519
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1577
+msgid "Refresh list"
+msgstr "Obnoviť zoznam"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1744
+msgid "Publish Your Contest"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1746
+msgid ""
+"Add this WordPress shortcode to a page on your site. You could also add the "
+"widget to your sidebar through WordPress Appearance &gt; Widgets menu."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1748
+msgid "Select the page you added it to."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1749
+msgid "Select a page"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1766
+msgid "Validate that the code was added correctly."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1767
+msgid "Add a call-to-action on your home page to drive traffic."
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-contest.php:1769
+msgid "Promote your Sweepstakes"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-list.php:11
+msgid "All Contests"
+msgstr "Všetky súťaže"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-list.php:30
+msgid "Add New"
+msgstr "Pridať"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-participants.php:10
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/pages/page-participants.php:31
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:22
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:73
+msgid "Participants"
+msgstr "Účastníci"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:21
+msgid "Title"
+msgstr "Nadpis"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:23
+msgid "Start time"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:24
+msgid "Duration"
+msgstr "Trvanie"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:25
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:38
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:60
+msgid "Status"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:71
+msgid "Edit"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:72
+msgid "Delete"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:112
+msgid "Expired (forced)"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:113
+msgid "Active"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:114
+msgid "Winners picked (automatic)"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-contests.php:115
+msgid "Winners picked (manual)"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:34
+msgid "Email Address"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:35
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:60
+msgid "First name"
+msgstr "Meno"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:36
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:60
+msgid "Last name"
+msgstr "Priezvisko"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:37
+msgid "Entries"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:39
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:60
+msgid "Contest ID"
+msgstr "ID súťaže"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:60
+msgid "Email"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:126
+msgid "Select Contest"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:137
+msgid "Apply"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:143
+msgid "Export to CVS"
+msgstr "Exportovať do CVS"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:154
+msgid "Stop Contest"
+msgstr "Zastaviť súťaž"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:156
+msgid "Resume Contest"
+msgstr ""
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:166
+msgid "Pick Winners"
+msgstr "Vybrať výhercov"
+
+#: g:\Web\sandbox\wp\wp-content\plugins\contest-hopper/tables/table-participants.php:168
+msgid "Repick Winners"
+msgstr ""
