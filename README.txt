@@ -4,15 +4,29 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: contest, contests, sweepstake, sweepstakes
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 0.9
+Stable tag: 0.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Contests for every WordPress site.
+The easiest way to run powerful, viral social sweepstakes, contests and giveaways on your WordPress website or blog.
 
 == Description ==
 
-Create your own contests and sweepstakes in seconds with customizable designs and multitude of features ranging from referrals, automatic random winner pick to integration with your favorite mailing list service like MailChimp, AWeber, CampaignMonitor and GetResponse.
+ContestHopper for WordPress is the easiest way to run social sweepstakes, contests and giveaways to grow your email list and build your network. ContestHopper is fully customizable and delightfully simple to use but doesn't cramp your style, get creative!
+
+**Features**
+
+* Fully integrated with Google Fonts and Typekit API
+* Social sharing buttons include Facebook, Pinterest, Twitter, LinkedIn, Google+
+* URL shortening built-in
+* Automated winner selection with Random.org
+* Integrated with MailChimp, AWeber, CampaignMonitor and GetResponse
+* Easily sort, filter & export email lists to Excel
+* Custom fields, entry notifications, add your own background image or video
+* Unlimited contests and entries
+* Weighted entry system to reward users for sharing
+* Easily add your own rules & disclaimer
+* Fully responsive design
 
 == Installation ==
 
@@ -35,11 +49,44 @@ Yes. You can email me in this case.
 
 == Changelog ==
 
+= 0.9.4 =
+* Third party integration fix.
+* Added TinyMCE editor to contest description with shortcode support.
+* Added filter for referral variable.
+* Added multiple default values for new contest.
+* Added new option for disclaimer and rules type: None.
+
+= 0.9.3 =
+* Referral + double opt-in fix.
+
+= 0.9.2 =
+* Added referral relation for user.
+* Referral fix.
+
+= 0.9.1 =
+* Tiny fixes and added description.
+
 = 0.9 =
 * Initial release.
 
 == Upgrade Notice ==
-* Initial release.
+
+= 0.9.4 =
+* Third party integration fix.
+* Added TinyMCE editor to contest description with shortcode support.
+* Added filter for referral variable.
+* Added multiple default values for new contest.
+* Added new option for disclaimer and rules type: None.
+
+= 0.9.3 =
+* Referral + double opt-in fix.
+
+= 0.9.2 =
+* Added referral relation for user.
+* Referral fix.
+
+= 0.9.1 =
+Tiny fixes and added description.
 
 = 0.9 =
 Initial release.

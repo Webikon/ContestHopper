@@ -27,7 +27,7 @@ class CH_Page_Participants
     */
     function __construct()
     {
-        $this->page_hook = add_submenu_page(CH_Page_List::page_id, __('Participants', 'contesthopper'), __('Participants', 'contesthopper'), 'read', self::page_id, array(&$this, 'generate'));   
+        $this->page_hook = add_submenu_page(CH_Page_List::page_id, __('Participants', 'contesthopper'), __('Participants', 'contesthopper'), 'manage_options', self::page_id, array(&$this, 'generate'));   
         add_action('load-'.$this->page_hook, array(&$this, 'init'));
     }
     

@@ -105,7 +105,7 @@ echo CH_Widget::get_template('boxes');
 // media, description
 $media_data = CH_Widget::get_template('media');
 $media = '<div class="'.$media_css.'">'.$media_data.'</div>';
-$description = '<div class="'.$description_css.'" style="color: '.$description_color.';'.$description_align.$description_font.'">'.nl2br(esc_html($contest->ch_description)).'</div>';
+$description = '<div class="'.$description_css.'" style="color: '.$description_color.';'.$description_align.$description_font.'">'.apply_filters('the_content', $description_text).'</div>';
 
 if($layout=='description-top')
     echo $description.$media;
@@ -139,12 +139,16 @@ echo '</div></div>
 <div class="ch_footer">
         <span class="ch_rules_disclaimer">';
 
-if($contest->ch_disclaimer_rules_type=='popup')
-    echo '<a href="#" class="ch_rules_disclaimer_link" id="'.$widget_id.'_dialog_link">';
-else
-    echo '<a href="'.$contest->ch_disclaimer_rules_url.'" target="_blank">';
+if($contest->ch_disclaimer_rules_type!='none')
+{
+    if($contest->ch_disclaimer_rules_type=='popup')
+        echo '<a href="#" class="ch_rules_disclaimer_link" id="'.$widget_id.'_dialog_link">';
+    else if($contest->ch_disclaimer_rules_type=='url')
+        echo '<a href="'.$contest->ch_disclaimer_rules_url.'" target="_blank">';
 
-echo __('Official Rules', 'contesthopper').'</a></span>
+    echo __('Official Rules', 'contesthopper').'</a>';
+}
+echo '</span>
         <span class="ch_poweredby">'.__('Powered by', 'contesthopper').' ContestHopper</span>
         <div class="ch_clear"></div>
     </div>

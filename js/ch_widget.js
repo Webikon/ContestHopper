@@ -146,14 +146,14 @@ jQuery(document).ready(function() {
            // ajax data
            var data = {
                // TODO: take all input parameters automatically, do not enum them
-               action: 'contesthopper_process',
-               email: ch_email,
-               first_name: ch_first_name,
-               last_name: ch_last_name,
-               contest_id: ch_contest_id,
-               div_id: widget_div,
-               ref: ch_ref,
-               url: ch_url
+               'action': 'contesthopper_process',
+               'email': ch_email,
+               'first_name': ch_first_name,
+               'last_name': ch_last_name,
+               'contest_id': ch_contest_id,
+               'div_id': widget_div,
+               'ch_ref': ch_ref,
+               'url': ch_url
            };
            
            // loading

@@ -247,17 +247,17 @@ class CH_Widget
         // get widget id
         $data['widget_id'] = 'ch_widget-'.$data['contest']->ID.'_'.self::$widget_count;
         
+        // get current ref
+        $data['ref'] = '';
+        if(isset($_GET[$data['contest']->ref_variable]))
+            $data['ref'] = $_GET[$data['contest']->ref_variable];
+        
         // get current url
         $data['url'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         $data['url'] = remove_query_arg('ref', $data['url']);
         if($preview!=false)
             $data['url'] = 'http://sample.url/';
         
-        // get current ref
-        $data['ref'] = '';
-        if(isset($_GET['ref']))
-            $data['ref'] = $_GET['ref'];
-                
         // get participant if possible
         $data['participant'] = '';
         if(isset($_COOKIE['contesthopper_'.$data['contest']->ID])) // check for existing cookies
@@ -329,8 +329,15 @@ class CH_Widget
     {
         global $wpdb;
 
+        // check for valid contest
+        $contest = new CH_Contest(intval($_POST['contest_id']));
+        if($contest->_valid==false)
+        {
+            echo '<div class="error">'.__('Invalid contest', 'contesthopper').'</div>';
+            die();
+        }
+        
         // get POST data
-        $contest_id = $wpdb->escape($_POST['contest_id']);
         $widget_id = esc_attr($_POST['div_id']);
         $url = urldecode($_POST['url']);
         $email = $wpdb->escape($_POST['email']);
@@ -341,18 +348,10 @@ class CH_Widget
         if(!empty($_POST['last_name']))
             $last_name = $wpdb->escape($_POST['last_name']);
         $ref = '';
-        if(!empty($_POST['ref']))
-            $ref = $wpdb->escape($_POST['ref']);
+        if(!empty($_POST['ch_ref']))
+            $ref = $wpdb->escape($_POST['ch_ref']);
        
         $do_process = true; // flag to indicate invalid input ~ do not process any data, just print the widget
-       
-        // check for valid contest
-        $contest = new CH_Contest($contest_id);
-        if($contest->_valid==false)
-        {
-            echo '<div class="error">'.__('Invalid contest', 'contesthopper').'</div>';
-            die();
-        }
         
         // init widget data
         $data = array();
@@ -401,7 +400,7 @@ class CH_Widget
             $double_optin = false;
             if($contest->ch_double_optin=='1')
                 $double_optin = true;
-        
+            
             // prepare participant data
             $participant_data = array('ip' => $_SERVER['REMOTE_ADDR'],
                 'date_gmt' => current_time('mysql', 1),
@@ -429,24 +428,24 @@ class CH_Widget
 
                 if($contest->ch_referral_field=='1') // if using referral field generate and store short url for the new participant referral link
                 {
-                    $ref_url = add_query_arg('ref', $participant->code, $url);
+                    $ref_url = add_query_arg($contest->ref_variable, $participant->code, $url);
                     $ref_url_short = self::process_shorten_url($contest, $participant, $ref_url);
                     if(!empty($ref_url_short))
                         $participant->add_meta('short_ref', $ref_url_short);
                 }
-            
-                if(!empty($ref)) // if participant was referred, store it
+
+                if(!empty($ref) && $contest->ch_referral_field=='1') // if participant was referred, store it
                 { 
                     if(!$double_optin)
                     {
-                        $referral = new CH_Participant($referral, true);
+                        $referral = new CH_Participant($ref, true);
                         if($referral->_valid && !empty($participant_id))
                             $referral->add_meta('referral_to', $participant_id); // store that participant was referred by $referral
                     }
                     else // if is double-optin, can't store referral until participant confirms his email
-                        $participant->add_meta('tmp_referral', $referral);
-                }        
-        
+                        $participant->add_meta('tmp_referral', $ref);
+                }
+
                 if(!$double_optin)
                 {
                     // process stuff
@@ -552,8 +551,8 @@ class CH_Widget
     */
     static function process_optin_email($contest, $participant, $url)
     {
-        if(isset($_GET['ref']))
-            $url = remove_query_arg('ref', $url);
+        if(isset($_GET[$contest->ref_variable]))
+            $url = remove_query_arg($contest->ref_variable, $url);
         
         $confirm_url = add_query_arg('contesthopper_confirm', $participant->code, $url);
         
@@ -633,17 +632,25 @@ class CH_Widget
     {
         // mailing lists
         
+        $email = $participant->email;
+        $name = '';
+        $first_name = '';
+        $last_name = '';
+        
+        if($contest->ch_name_field=='1')
+        {
+            $name = $participant->first_name.' '.$participant->last_name;
+            $first_name = $participant->first_name;
+            $last_name = $participant->last_name;
+        }
+                
         if($contest->ch_participants_export=='campaignmonitor')
         {
              if(!class_exists(CS_REST_Subscribers))
                 require(CH_Manager::$plugin_dir.'lib/campaign_monitor/csrest_subscribers.php');
              
              $wrap = new CS_REST_Subscribers($contest->ch_campaignmonitor_list, $contest->ch_campaignmonitor_key);
-             
-             $name = '';
-             if($contest->ch_name_field=='1')
-                $name = $first_name.' '.$last_name;
-             
+                          
              $res = $wrap->add(array(
                 'EmailAddress' => $email,
                 'Name' => $name,
@@ -658,9 +665,13 @@ class CH_Widget
         {
             if(!class_exists(MCAPI))
                 require(CH_Manager::$plugin_dir.'lib/MCAPI.class.php');
-                
+            
+            $double_optin = true;
+            if($contest->ch_double_optin=='1')
+                $double_optin = false;
+            
             $api = new MCAPI($contest->ch_mailchimp_key);
-            $api->listSubscribe($contest->ch_mailchimp_list, $email, array('FNAME' => $first_name, 'LNAME' => $last_name)); // ..., 'html' <-- email type, false <-- double optin);
+            $api->listSubscribe($contest->ch_mailchimp_list, $email, array('FNAME' => $first_name, 'LNAME' => $last_name), 'html', $double_optin); // double optin;
             
             // if($api->errorCode)
             // $api->errorCode
@@ -669,10 +680,6 @@ class CH_Widget
         else if($contest->ch_participants_export=='getresponse')
         {
             require(CH_Manager::$plugin_dir.'lib/GetResponseAPI.class.php');
-            
-            $name = '';
-            if($contest->ch_name_field=='1')
-                $name = $first_name.' '.$last_name;
                 
             $api = new GetResponseAPI($contest->ch_getresponse_key);
             $response = $api->addContact($contest->ch_getresponse_list, $name, $email);
@@ -682,11 +689,7 @@ class CH_Widget
         else if($contest->ch_participants_export=='aweber')
         {
             require(CH_Manager::$plugin_dir.'lib/aweber/aweber_api.php');
-            
-            $name = '';
-            if($contest->ch_name_field=='1')
-                $name = $first_name.' '.$last_name;
-            
+                        
             $aweber_auth = $contest->ch_aweber_auth;
             if(!empty($aweber_auth) && is_array($aweber_auth))
             {

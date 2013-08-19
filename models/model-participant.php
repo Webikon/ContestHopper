@@ -329,6 +329,12 @@ class CH_Participant
             return false;
         $affected_rows += $res;
         
+        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `meta_key`="referral_to" AND `meta_value`="'.$wpdb->escape($this->data['id']).'"';
+        $res = $wpdb->query($sql);
+        if($res===false)
+            return false;
+        $affected_rows += $res;
+        
         $sql = 'DELETE FROM `'.$tbl_participant.'` WHERE `id`='.$wpdb->escape($this->data['id']).' LIMIT 1';
         $res = $wpdb->query($sql);
         if($res===false)

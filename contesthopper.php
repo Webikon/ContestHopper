@@ -3,7 +3,7 @@
 Plugin Name: ContestHopper for WordPress
 Plugin URI: http://www.contesthopper.com
 Description: Create your own contests and sweepstakes in seconds with customizable designs and multitude of features ranging from referrals, automatic random winner pick to integration with your favorite mailing list service like MailChimp, AWeber, CampaignMonitor and GetResponse.
-Version: 0.9.1
+Version: 0.9.4
 Author: Webikon (Matúš Čerman)
 Author URI: http://www.webikon.sk
 License: GPLv2+
@@ -105,7 +105,7 @@ if(!class_exists('CH_Manager'))
             foreach($contests as $contest)
             {
                 if($contest->is_expired())
-                {                    
+                {
                     if(isset($contest->ch_autoselect_winner) && $contest->ch_autoselect_winner=='1')
                     {
                         $winners_num = 1;

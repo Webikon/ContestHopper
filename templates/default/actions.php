@@ -10,6 +10,7 @@ $participant = $widget->participant;
 $url = $widget->url;
 $widget_id = $widget->widget_id;
 $widget_errors = $widget->error;
+$ref = isset($_GET[$contest->ref_variable]) ? $_GET[$contest->ref_variable] : '';
 
 echo '<form id="'.$widget_id.'_form" method="post">';
 echo '<input type="hidden" name="contest_id" class="ch_contest_id" value="'.$contest->ID.'" /><input type="hidden" name="ch_ref" class="ch_ref" value="'.esc_attr($ref).'" /><input type="hidden" name="url" class="ch_url" value="'.$url.'" />';

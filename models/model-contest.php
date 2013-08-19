@@ -30,6 +30,8 @@ class CH_Contest
             $this->from_array($data);
         else if(is_numeric($data))
             $this->data['_valid'] = $this->get($data);
+        
+        $this->data['ref_variable'] = apply_filters('contesthopper_ref_variable', 'ref', $this);
     }
     
     /**
@@ -42,10 +44,30 @@ class CH_Contest
         
         $args = array('post_type' => CH_Manager::post_type, 'post_status' => 'auto-draft');
         $query = new WP_Query($args);
-        
+
         if(count($query->posts)==0) // auto draft doesnt exist, create new
         {
             $new_id = wp_insert_post($args);
+            
+            $datetimes = self::get_default_times();
+            
+            update_post_meta($new_id, 'ch_disclaimer_rules_type', 'none');
+            update_post_meta($new_id, 'ch_media_description_layout', 'media-top');
+            update_post_meta($new_id, 'ch_widget_size', '640');
+            update_post_meta($new_id, 'ch_headline_color', '#ffffff');
+            update_post_meta($new_id, 'ch_headline_font', 'arial');
+            update_post_meta($new_id, 'ch_description_color', '#000000');
+            update_post_meta($new_id, 'ch_description_font', 'arial');
+            update_post_meta($new_id, 'ch_title_background_color', '#40b3df');
+            update_post_meta($new_id, 'ch_background_color', '#ffffff');
+            update_post_meta($new_id, 'ch_border_color', '#2a71a2');
+            update_post_meta($new_id, 'ch_winners_num', '1');
+            update_post_meta($new_id, 'ch_referral_entries', '1');
+            update_post_meta($new_id, 'ch_timezone', $datetimes['timezone']);
+            update_post_meta($new_id, 'ch_date_start', $datetimes['start']);
+            update_post_meta($new_id, 'ch_date_end', $datetimes['end']);
+            update_post_meta($new_id, 'ch_submit_text', __('Join sweepstakes', 'contesthopper'));
+            
             return $new_id;
         }    
 
@@ -78,6 +100,54 @@ class CH_Contest
         }
         
         return true;    
+    }
+    
+    public static function get_default_times()
+    {
+        $wp_offset = get_option('gmt_offset');
+        $wp_timezone = get_option('timezone_string');
+        
+        $default_utc = '+0';
+       
+        // WP has either the timezone or time offset stored
+        if(!empty($wp_timezone))
+        {
+            $res = timezone_offset_get(new DateTimeZone($wp_timezone), new DateTime());
+            if($res!==false)
+            {
+                if($res<0)
+                    $default_utc = '-';
+                else
+                    $default_utc = '+';
+                
+                $default_utc .= abs($res);
+            }
+        }
+        
+        if(!empty($wp_offset))
+        {
+            $wp_offset = floatval($wp_offset);
+            $res = $wp_offset * 3600;
+            
+            if($res<0)
+                $default_utc = '-';
+            else
+                $default_utc = '+';
+                
+            $default_utc .= abs($res);            
+        }
+        $default_time_start = current_time('timestamp');
+        $default_time_end = $default_time_start + (30*24*3600);
+        $default_time_start = date('Y-m-d H:i', $default_time_start);
+        $default_time_end = date('Y-m-d H:i', $default_time_end);
+        
+        $output = array(
+            'timezone' => $default_utc,
+            'start' => $default_time_start,
+            'end' => $default_time_end
+        );
+        
+        return $output;
     }
     
     /**

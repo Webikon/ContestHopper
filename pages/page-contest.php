@@ -43,7 +43,7 @@ class CH_Page_Contest
     {
         $this->contest = false;
         
-        $this->page_hook = add_submenu_page(CH_Page_List::page_id, 'Add/Edit Contest', 'Add New', 'read', self::page_id, array(&$this, 'generate'));   
+        $this->page_hook = add_submenu_page(CH_Page_List::page_id, 'Add/Edit Contest', 'Add New', 'manage_options', self::page_id, array(&$this, 'generate'));   
         add_action('load-'.$this->page_hook, array(&$this, 'init'));
     }
     
@@ -369,6 +369,43 @@ class CH_Page_Contest
         return $output;
     }
     
+    /**
+    * Generates TinyMCE field.
+    * 
+    * @param string $name Field name.
+    * @param mixed $field Field attributes.
+    * @param mixed $value Field value.
+    */
+    protected function field_editor($name, $field, $value = '')
+    {
+        $id = '';
+        $id_input = '';
+        $id_container = '';
+        if(!empty($field['id']))
+        {
+            $id = $field['id'];
+            $id_input = ' id="'.$id.'"';
+            $id_container = ' id="'.$id.'_container"';
+        }
+        
+        $css_container = '';
+        if(!empty($field['css_container']))
+            $css_container = ' class="'.$field['css_container'].'"';
+        
+        $output = '<tr'.$id_container.$css_container.' valign="top"><th class="ch_label"><label for="'.$id.'">'.$field['title'].'</label></th><td>';
+        
+        ob_start();
+        wp_editor($value, $id, array('media_buttons' => false, 'textarea_name' => $name, 'teeny' => false));
+        $output .= ob_get_clean(); 
+        
+        if(!empty($field['description']))
+            $output .= '<br /><small>'.$field['description'].'</small>';
+                
+        $output .= '</td></tr>';
+        
+        return $output;
+    }
+        
     /**
     * Generates singular checkbox field.
     * 
@@ -1852,7 +1889,7 @@ jQuery(document).ready(function($) {
                     
                     'ch_description' => array(
                         'id' => 'ch_description',
-                        'type' => 'textarea',
+                        'type' => 'editor',
                         'title' => __('Contest description', 'contesthopper'),
                         'description' => __('Describe your contest and the prize that you will giveaway.', 'contesthopper'),
                         'css' => 'ch_input_large'
@@ -1868,6 +1905,7 @@ jQuery(document).ready(function($) {
                         'type' => 'select',
                         'title' => __('Type', 'contesthopper'),
                         'options' => array(
+                            'none' => __('None', 'contesthopper'),
                             'popup' => __('Popup', 'contesthopper'),
                             'url' => __('Link', 'contesthopper')
                         ),
@@ -2041,7 +2079,7 @@ jQuery(document).ready(function($) {
                     'ch_border_color' => array(
                         'id' => 'ch_border_color',
                         'type' => 'color',
-                        'title' => __('Border color', 'contethopper'),
+                        'title' => __('Border color', 'contesthopper'),
                         'default' => '#2a71a2'
                     )
                     /*                                                      
@@ -2061,45 +2099,7 @@ jQuery(document).ready(function($) {
     * Sets settings tab postboxes and fields.
     */
     function setup_settings()
-    {
-        $wp_offset = get_option('gmt_offset');
-        $wp_timezone = get_option('timezone_string');
-        
-        $default_utc = '+0';
-       
-        // WP has either the timezone or time offset stored
-        if(!empty($wp_timezone))
-        {
-            $res = timezone_offset_get(new DateTimeZone($wp_timezone), new DateTime());
-            if($res!==false)
-            {
-                if($res<0)
-                    $default_utc = '-';
-                else
-                    $default_utc = '+';
-                
-                $default_utc .= abs($res);
-            }
-        }
-        
-        if(!empty($wp_offset))
-        {
-            $wp_offset = floatval($wp_offset);
-            $res = $wp_offset * 3600;
-            
-            if($res<0)
-                $default_utc = '-';
-            else
-                $default_utc = '+';
-                
-            $default_utc .= abs($res);            
-        }
-        
-        $default_time_start = current_time('timestamp');
-        $default_time_end = $default_time_start + (30*24*3600);
-        $default_time_start = date('Y-m-d H:i', $default_time_start);
-        $default_time_end = date('Y-m-d H:i', $default_time_end);
-        
+    {        
         $this->boxes = array(
             'ch_box_settings' => array(
                 'title' => __('Widget Settings', 'contesthopper'),
@@ -2336,7 +2336,8 @@ jQuery(document).ready(function($) {
                         'title' => __('Double opt-in email', 'contesthopper'),
                         'css' => 'ch_input_large',
                         'css_container' => 'ch_hidden',
-                        'description' => __('Tags you can use: {FIRST_NAME} {LAST_NAME} {URL}', 'contesthopper')
+                        'description' => __('Tags you can use: {FIRST_NAME} {LAST_NAME} {URL}', 'contesthopper'),
+                        'default' => '{URL}'
                     ),
                     
                     'ch_referral_entries' => array(
@@ -2529,21 +2530,19 @@ jQuery(document).ready(function($) {
                             '+46800' => 'UTC+13',
                             '+50400' => 'UTC+14'
                         ),
-                        'default' => $default_utc
+                        'default' => '+0'
                     ),
                     
                     'ch_date_start' => array(
                         'id' => 'ch_date_start',
                         'type' => 'datetime',
-                        'title' => __('Start date & time', 'contesthopper'),
-                        'default' => $default_time_start
+                        'title' => __('Start date & time', 'contesthopper')
                     ),
                     
                     'ch_date_end' => array(
                         'id' => 'ch_date_end',
                         'type' => 'datetime',
-                        'title' => __('End date & time', 'contesthopper'),
-                        'default' => $default_time_end
+                        'title' => __('End date & time', 'contesthopper')
                     )
                 )
             )
