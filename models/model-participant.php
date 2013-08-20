@@ -53,7 +53,7 @@ class CH_Participant
             return false;
             
         $tbl_participant = $wpdb->prefix.CH_Manager::sqlt_participant;
-        $sql = 'SELECT id FROM '.$tbl_participant.' WHERE `email`="'.$wpdb->escape($this->data['email']).'" AND `contest_id`='.$wpdb->escape($this->data['contest_id']);
+        $sql = 'SELECT id FROM '.$tbl_participant.' WHERE `email`="'.esc_sql($this->data['email']).'" AND `contest_id`='.esc_sql($this->data['contest_id']);
         
         $res = $wpdb->get_var($sql);
         if($res==NULL)
@@ -80,7 +80,7 @@ class CH_Participant
         }
         else
         {
-            $id = $wpdb->escape($id);
+            $id = esc_sql($id);
             $sql = 'SELECT id, contest_id, date_gmt, ip, code, email, status FROM `'.$tbl_participant.'` WHERE `code`="'.$id.'" LIMIT 1';
         }
         $data = $wpdb->get_results($sql, ARRAY_A);
@@ -169,7 +169,7 @@ class CH_Participant
             $sql .= ' AND `status`!="not_confirmed"';
         
         if(is_numeric($contest_id))
-            $sql .= ' AND `contest_id`='.$wpdb->escape($contest_id);
+            $sql .= ' AND `contest_id`='.esc_sql($contest_id);
         
         $num = $wpdb->get_var($sql);
         if($num==NULL)
@@ -259,10 +259,10 @@ class CH_Participant
             
         $sql .= ' WHERE'.$status;
         if(is_numeric($contest_id))
-            $sql .= ' AND t1.`contest_id`='.$wpdb->escape($contest_id);
+            $sql .= ' AND t1.`contest_id`='.esc_sql($contest_id);
         
         if($meta_query && !$aggr_query)
-            $sql .= ' AND t2.`meta_key`="'.$wpdb->escape($in_orderby).'"';
+            $sql .= ' AND t2.`meta_key`="'.esc_sql($in_orderby).'"';
         
         if($aggr_query)
             $sql .= ' AND t2.`meta_key`!="tmp_referral" GROUP BY t1.`id`';
@@ -290,12 +290,12 @@ class CH_Participant
         
         $tbl_participant = $wpdb->prefix.CH_Manager::sqlt_participant;
         
-        $contest_id = $wpdb->escape($this->data['contest_id']);
-        $date_gmt = $wpdb->escape($this->data['date_gmt']);
-        $ip = $wpdb->escape($this->data['ip']);
-        $code = $wpdb->escape($this->data['code']);
-        $email = $wpdb->escape($this->data['email']);
-        $status = $wpdb->escape($this->data['status']);
+        $contest_id = esc_sql($this->data['contest_id']);
+        $date_gmt = esc_sql($this->data['date_gmt']);
+        $ip = esc_sql($this->data['ip']);
+        $code = esc_sql($this->data['code']);
+        $email = esc_sql($this->data['email']);
+        $status = esc_sql($this->data['status']);
                 
         $sql = 'INSERT INTO `'.$tbl_participant.'` (contest_id, date_gmt, ip, code, email, status) VALUES ('.$contest_id.', "'.$date_gmt.'", "'.$ip.'", "'.$code.'", "'.$email.'", "'.$status.'");';
 
@@ -323,19 +323,19 @@ class CH_Participant
         $tbl_participant_meta = $wpdb->prefix.CH_Manager::sqlt_participant_meta;
         
         $affected_rows = 0;
-        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `participant_id`='.$wpdb->escape($this->data['id']);
+        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `participant_id`='.esc_sql($this->data['id']);
         $res = $wpdb->query($sql);
         if($res===false)
             return false;
         $affected_rows += $res;
         
-        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `meta_key`="referral_to" AND `meta_value`="'.$wpdb->escape($this->data['id']).'"';
+        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `meta_key`="referral_to" AND `meta_value`="'.esc_sql($this->data['id']).'"';
         $res = $wpdb->query($sql);
         if($res===false)
             return false;
         $affected_rows += $res;
         
-        $sql = 'DELETE FROM `'.$tbl_participant.'` WHERE `id`='.$wpdb->escape($this->data['id']).' LIMIT 1';
+        $sql = 'DELETE FROM `'.$tbl_participant.'` WHERE `id`='.esc_sql($this->data['id']).' LIMIT 1';
         $res = $wpdb->query($sql);
         if($res===false)
             return false;
@@ -376,7 +376,7 @@ class CH_Participant
         do
         {
             $random_code = md5(uniqid().self::random_pass());
-            $sql = 'SELECT id FROM '.$tbl_participant.' WHERE code="'.$wpdb->escape($random_code).'"';
+            $sql = 'SELECT id FROM '.$tbl_participant.' WHERE code="'.esc_sql($random_code).'"';
             $res = $wpdb->get_var($sql);
         }while($res!=NULL);
         
@@ -397,7 +397,7 @@ class CH_Participant
         
         $tbl_participant_meta = $wpdb->prefix.CH_Manager::sqlt_participant_meta;
         
-        $sql = 'INSERT INTO `'.$tbl_participant_meta.'` (participant_id, meta_key, meta_value) VALUES('.$wpdb->escape($this->data['id']).', "'.$wpdb->escape($key).'", "'.$wpdb->escape($value).'");';
+        $sql = 'INSERT INTO `'.$tbl_participant_meta.'` (participant_id, meta_key, meta_value) VALUES('.esc_sql($this->data['id']).', "'.esc_sql($key).'", "'.esc_sql($value).'");';
         $res = $wpdb->query($sql);
 
         if($res===false)
@@ -429,7 +429,7 @@ class CH_Participant
         
         $tbl_participant_meta = $wpdb->prefix.CH_Manager::sqlt_participant_meta;
         
-        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `participant_id`='.$wpdb->escape($this->data['id']).' AND `meta_key`="'.$wpdb->escape($key).'";';
+        $sql = 'DELETE FROM `'.$tbl_participant_meta.'` WHERE `participant_id`='.esc_sql($this->data['id']).' AND `meta_key`="'.esc_sql($key).'";';
         $res = $wpdb->query($sql);
         if($res===false)
             return false;
@@ -453,7 +453,7 @@ class CH_Participant
         
         $tbl_participant = $wpdb->prefix.CH_Manager::sqlt_participant;
         
-        $sql = 'UPDATE `'.$tbl_participant.'` SET `status`="'.$wpdb->escape($status).'" WHERE `id`='.$wpdb->escape($this->data['id']).' LIMIT 1';
+        $sql = 'UPDATE `'.$tbl_participant.'` SET `status`="'.esc_sql($status).'" WHERE `id`='.esc_sql($this->data['id']).' LIMIT 1';
         $res = $wpdb->query($sql);
         if($res===false)
             return false;

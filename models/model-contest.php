@@ -160,7 +160,7 @@ class CH_Contest
             return 0;
             
         global $wpdb;
-        $sql = 'SELECT id FROM `'.$wpdb->prefix.CH_Manager::sqlt_participant.'` WHERE `contest_id`='.$wpdb->escape($this->data['ID']).' AND `status`!="not_valid" AND `status`!="not_confirmed"';
+        $sql = 'SELECT id FROM `'.$wpdb->prefix.CH_Manager::sqlt_participant.'` WHERE `contest_id`='.esc_sql($this->data['ID']).' AND `status`!="not_valid" AND `status`!="not_confirmed"';
         $data = $wpdb->get_results($sql, ARRAY_A);
         $num_participants = count($data);
         $num_referrals = 0;
@@ -302,7 +302,7 @@ class CH_Contest
         
         global $wpdb;
         
-        $sql = 'SELECT `contest_id` FROM `'.$tbl_participant.'` WHERE `code`="'.$wpdb->escape($code).'" LIMIT 1';
+        $sql = 'SELECT `contest_id` FROM `'.$tbl_participant.'` WHERE `code`="'.esc_sql($code).'" LIMIT 1';
         $contest_id = $wpdb->get_var($sql);
         $contest = new CH_Contest($contest_id);
         return $contest;
@@ -336,7 +336,7 @@ class CH_Contest
     function set_status($status)
     {            
         global $wpdb;                  
-        update_post_meta($this->data['ID'], 'ch_status', $wpdb->escape($status));
+        update_post_meta($this->data['ID'], 'ch_status', esc_sql($status));
     }
     
     /**
@@ -427,7 +427,7 @@ class CH_Contest
             return false;
         
         $tbl_participant = $wpdb->prefix.CH_Manager::sqlt_participant;
-        $sql = 'UPDATE `'.$tbl_participant.'` SET `status`="" WHERE `status` LIKE "winner%" AND `contest_id`='.$wpdb->escape($this->data['ID']);
+        $sql = 'UPDATE `'.$tbl_participant.'` SET `status`="" WHERE `status` LIKE "winner%" AND `contest_id`='.esc_sql($this->data['ID']);
         
         $res = $wpdb->query($sql);
         if($res===false)
@@ -446,7 +446,7 @@ class CH_Contest
             
         global $wpdb;
         $tbl_participant = $wpdb->prefix.CH_Manager::sqlt_participant;
-        $sql = 'SELECT count(*) FROM `'.$tbl_participant.'` WHERE `status`="winner" AND `contest_id`='.$wpdb->escape($this->data['ID']);
+        $sql = 'SELECT count(*) FROM `'.$tbl_participant.'` WHERE `status`="winner" AND `contest_id`='.esc_sql($this->data['ID']);
         
         $res = $wpdb->get_var($sql);
         $num = 0;
