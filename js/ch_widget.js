@@ -8,7 +8,10 @@ ch_ctdn = function (timeDiff, contest_id)
     
     if (timeDiff <= 0) { // timer ends
         clearTimeout(timer);
-        document.getElementById(contest_id).getElementsByClassName("ch_countdown")[0].innerHTML = '';
+        jQuery('#'+contest_id+' .ch_countdown_days').html("0 days ");
+        jQuery('#'+contest_id+' .ch_countdown_hours').html("00h ");
+        jQuery('#'+contest_id+' .ch_countdown_minutes').html("00m ");
+        jQuery('#'+contest_id+' .ch_countdown_seconds').html("00s ");
         return;
     }
     var seconds = timeDiff;
@@ -28,19 +31,12 @@ ch_ctdn = function (timeDiff, contest_id)
         days_text += ' days ';
     else
         days_text += ' day ';
-    
-    //document.getElementById(contest_id).getElementsByClassName("ch_countdown_days")[0].innerHTML = days_text;
-    //document.getElementById(contest_id).getElementsByClassName("ch_countdown_hours")[0].innerHTML = pad(hours,2)+"h ";
-    //document.getElementById(contest_id).getElementsByClassName("ch_countdown_minutes")[0].innerHTML = pad(minutes,2)+"m ";
-    //document.getElementById(contest_id).getElementsByClassName("ch_countdown_seconds")[0].innerHTML = pad(seconds,2)+"s ";
-    // not jQuery free anymore :'(
-    
+        
     jQuery('#'+contest_id+' .ch_countdown_days').html(days_text);
     jQuery('#'+contest_id+' .ch_countdown_hours').html(pad(hours,2)+"h ");
     jQuery('#'+contest_id+' .ch_countdown_minutes').html(pad(minutes,2)+"m ");
     jQuery('#'+contest_id+' .ch_countdown_seconds').html(pad(seconds,2)+"s ");
 
-    
     var timer = setTimeout(function() { ch_ctdn(timeDiff-1, contest_id)},1000);
 }
 

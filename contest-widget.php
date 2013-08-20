@@ -475,7 +475,7 @@ class CH_Widget
         
         $data['participant'] = $participant;
         self::$current_widget = new CH_Widget($data);
-        echo self::get_template('widget', true);  
+        echo self::get_template('widget');  
         die();
     }
     

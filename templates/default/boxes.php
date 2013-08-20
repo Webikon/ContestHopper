@@ -23,15 +23,18 @@ if(!empty($participant))
 $total_entries = $contest->get_all_entries();
 
 // days left
-$sec_left = strtotime($contest->ch_date_end)-current_time('timestamp', 1);
+$sec_left = $widget->contest->get_utc_time()-(int)current_time('timestamp', 1);
 if(!is_numeric($sec_left))
     $sec_left = 0;
+
 $days_left = ceil($sec_left/86400);
 if($days_left<0)
     $days_left = 0;
-    
+
 if($days_left==0)
     $days_left = __('Ended', 'contesthopper');
+else if($days_left==1)
+    $days_left = __('Last day', 'contesthopper');
 
 $your_entries_str = __('Your Entries', 'contesthopper');
 $total_entries_str = __('Total Entries', 'contesthopper');
