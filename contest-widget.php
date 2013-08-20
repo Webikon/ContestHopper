@@ -543,7 +543,10 @@ class CH_Widget
         $message = str_replace('{FIRST_NAME}', $first_name, $message);
         $message = str_replace('{LAST_NAME}', $last_name, $message);
 
-        $from_email = $contest->ch_from_email;
+        $from_email = '';
+        if(isset($contest->ch_from_email))
+            $from_email = $contest->ch_from_email;
+
         if(empty($from_email))
             $from_email = 'Contesthopper <'.get_option('admin_email').'>';
 
@@ -578,8 +581,11 @@ class CH_Widget
         $message = str_replace('{URL}', $confirm_url, $message);
         $message = str_replace('{FIRST_NAME}', $first_name, $message);
         $message = str_replace('{LAST_NAME}', $last_name, $message);
-                
-        $from_email = $contest->ch_from_email;
+        
+        $from_email = '';
+        if(isset($contest->ch_from_email))
+            $from_email = $contest->ch_from_email;
+        
         if(empty($from_email))
             $from_email = 'Contesthopper <'.get_option('admin_email').'>';
 
