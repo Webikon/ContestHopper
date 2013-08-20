@@ -340,16 +340,16 @@ class CH_Widget
         // get POST data
         $widget_id = esc_attr($_POST['div_id']);
         $url = urldecode($_POST['url']);
-        $email = $wpdb->escape($_POST['email']);
+        $email = esc_sql($_POST['email']);
         $first_name = '';
         if(!empty($_POST['first_name']))
-            $first_name = $wpdb->escape($_POST['first_name']);
+            $first_name = esc_sql($_POST['first_name']);
         $last_name = '';
         if(!empty($_POST['last_name']))
-            $last_name = $wpdb->escape($_POST['last_name']);
+            $last_name = esc_sql($_POST['last_name']);
         $ref = '';
         if(!empty($_POST['ch_ref']))
-            $ref = $wpdb->escape($_POST['ch_ref']);
+            $ref = esc_sql($_POST['ch_ref']);
        
         $do_process = true; // flag to indicate invalid input ~ do not process any data, just print the widget
         

@@ -73,7 +73,7 @@ HTML;
         }
         else if($s=='pinit')
         {
-            $pinterest_url = urlencode($ref_url);
+            $pinterest_url = $url_enc; 
             $pinterest_image = urlencode($contest->ch_pinit_image);
             $pinterest_description = urlencode($contest->ch_pinit_description);
             $icon = CH_Manager::$plugin_url.'/img/pinterest.png';
