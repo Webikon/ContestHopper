@@ -67,6 +67,7 @@ class CH_Contest
             update_post_meta($new_id, 'ch_date_start', $datetimes['start']);
             update_post_meta($new_id, 'ch_date_end', $datetimes['end']);
             update_post_meta($new_id, 'ch_submit_text', __('Join sweepstakes', 'contesthopper'));
+            update_post_meta($new_id, 'ch_from_email', '"Contesthopper" <'.get_option('admin_email').'>');
             
             return $new_id;
         }    
@@ -97,6 +98,9 @@ class CH_Contest
             if(is_serialized($entry['meta_value']))
                 $entry['meta_value'] = unserialize($entry['meta_value']);
             $this->data[$entry['meta_key']] = $entry['meta_value'];
+
+            if($entry['meta_key']=='ch_from_email')
+                $this->data[$entry['meta_key']] = stripslashes($this->data[$entry['meta_key']]);
         }
         
         return true;    
@@ -256,6 +260,7 @@ class CH_Contest
         if(in_array($in_status, array('active', 'winners_picked')))  
             $status = ' AND t2.`meta_value`="'.$in_status.'"';
         
+        $limit = '';
         if(!empty($perpage))
         {
             $start = ($page * $perpage) - $perpage; 

@@ -2274,10 +2274,17 @@ jQuery(document).ready(function($) {
                     )
                 )
             ),
-            
+             
             'ch_box_entries_winners' => array(
                 'title' => 'Entries & Winners',
                 'fields' => array(
+                    'ch_from_email' => array(
+                        'id' => 'ch_from_email',
+                        'type' => 'text',
+                        'title' => __('Email sender', 'contesthopper'),
+                        'description' => __('Example', 'contesthopper').': "Contesthopper" &lt;'.get_option('admin_email').'&gt;',
+                        'css' => 'ch_input_large'
+                    ),
                     'ch_confirmation_email' => array(
                         'id' => 'ch_confirmation_email',
                         'type' => 'checkbox_singular',

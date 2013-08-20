@@ -532,13 +532,22 @@ class CH_Widget
 
         $to = $participant->email;
         $subject = $contest->ch_confirmation_email_subject;
-        $subject = str_replace('{FIRST_NAME}', $participant->first_name, $subject);
-        $subject = str_replace('{LAST_NAME}', $participant->last_name, $subject);
+        
+        $first_name = isset($participant->first_name) ? $participant->first_name : '';
+        $last_name = isset($participant->last_name) ? $participant->last_name : '';
+
+        $subject = str_replace('{FIRST_NAME}', $first_name, $subject);
+        $subject = str_replace('{LAST_NAME}', $last_name, $subject);
         
         $message = $contest->ch_confirmation_email_text;
-        $message = str_replace('{FIRST_NAME}', $participant->first_name, $message);
-        $message = str_replace('{LAST_NAME}', $participant->last_name, $message);
-        $headers = 'From: ContestHopper <'.get_option('admin_email').'>'."\r\n";
+        $message = str_replace('{FIRST_NAME}', $first_name, $message);
+        $message = str_replace('{LAST_NAME}', $last_name, $message);
+
+        $from_email = $contest->ch_from_email;
+        if(empty($from_email))
+            $from_email = 'Contesthopper <'.get_option('admin_email').'>';
+
+        $headers = 'From: '.$from_email."\r\n";
         
         $res = wp_mail($to, $subject, $message, $headers);
     }
@@ -558,15 +567,24 @@ class CH_Widget
         
         $to = $participant->email;
         $subject = $contest->ch_double_optin_subject;
-        $subject = str_replace('{FIRST_NAME}', $participant->first_name, $subject);
-        $subject = str_replace('{LAST_NAME}', $participant->last_name, $subject);
+
+        $first_name = isset($participant->first_name) ? $participant->first_name : '';
+        $last_name = isset($participant->last_name) ? $participant->last_name : '';
+
+        $subject = str_replace('{FIRST_NAME}', $first_name, $subject);
+        $subject = str_replace('{LAST_NAME}', $last_name, $subject);
         
         $message = $contest->ch_double_optin_email;
         $message = str_replace('{URL}', $confirm_url, $message);
-        $message = str_replace('{FIRST_NAME}', $participant->first_name, $message);
-        $message = str_replace('{LAST_NAME}', $participant->last_name, $message);
-        $headers = 'From: ContestHopper <'.get_option('admin_email').'>'."\r\n";
-          
+        $message = str_replace('{FIRST_NAME}', $first_name, $message);
+        $message = str_replace('{LAST_NAME}', $last_name, $message);
+                
+        $from_email = $contest->ch_from_email;
+        if(empty($from_email))
+            $from_email = 'Contesthopper <'.get_option('admin_email').'>';
+
+        $headers = 'From: '.$from_email."\r\n";
+        
         $res = wp_mail($to, $subject, $message, $headers);
         
         // TODO add antispam when(if?) resending emails
