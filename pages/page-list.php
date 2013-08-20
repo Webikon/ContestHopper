@@ -28,7 +28,7 @@ class CH_Page_List
     function __construct()
     {
         add_menu_page('ContestHopper', 'ContestHopper', 'manage_options', self::page_id, array(&$this, 'generate'));
-        $this->page_hook = add_submenu_page(self::page_id, __('All Contests', 'contesthopper'), __('All Contests', 'contesthopper'), 'read', self::page_id, array(&$this, 'generate'));   
+        $this->page_hook = add_submenu_page(self::page_id, __('All Contests', 'contesthopper'), __('All Contests', 'contesthopper'), 'manage_options', self::page_id, array(&$this, 'generate'));   
         add_action('load-'.$this->page_hook, array(&$this, 'init'));
     }
     

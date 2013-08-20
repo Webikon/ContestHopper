@@ -78,6 +78,9 @@ class CH_Page_Contest
             )
         );
         
+        if(empty($_GET['ch_page']))
+            $_GET['ch_page'] = 'description';
+
         $this->tabs = apply_filters('ch_contest_tabs', $this->tabs);
         
         $this->boxes = array();
