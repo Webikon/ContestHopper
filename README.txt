@@ -3,8 +3,8 @@ Contributors: JohnnyPea, webikon, Matúš Čerman
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FUT8H7SGMYE5E
 Tags: contest, contests, sweepstake, sweepstakes
 Requires at least: 3.1
-Tested up to: 3.5.1
-Stable tag: 0.9.4
+Tested up to: 3.6
+Stable tag: 0.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,12 @@ Yes. You can email me in this case.
 
 == Changelog ==
 
+= 0.9.5 =
+* Subscribers, contributors, authors and editors can no longer see contesthopper pages.
+* Fixed bug with "days remaining" box, will show correct number of days now.
+* Fixed deprecated code for WP 3.6.
+* Added option to set "from" email address.
+
 = 0.9.4 =
 * Third party integration fix.
 * Added TinyMCE editor to contest description with shortcode support.
@@ -70,6 +76,12 @@ Yes. You can email me in this case.
 * Initial release.
 
 == Upgrade Notice ==
+
+= 0.9.5 =
+* Subscribers, contributors, authors and editors can no longer see contesthopper pages.
+* Fixed bug with "days remaining" box, will show correct number of days now.
+* Fixed deprecated code for WP 3.6.
+* Added option to set "from" email address.
 
 = 0.9.4 =
 * Third party integration fix.
