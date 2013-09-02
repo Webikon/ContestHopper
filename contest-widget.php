@@ -253,7 +253,17 @@ class CH_Widget
             $data['ref'] = $_GET[$data['contest']->ref_variable];
         
         // get current url
-        $data['url'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+        $www = '';
+        if(isset($_SERVER['HTTP_HOST']))
+        {
+            if(strpos($_SERVER['HTTP_HOST'], '://www.')!==false)
+                $www = 'www.';
+
+            if(strpos($_SERVER['SERVER_NAME'], '://www.')!==false)
+                $www = '';
+        }
+
+        $data['url'] = 'http://'.$www.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
         $data['url'] = remove_query_arg('ref', $data['url']);
         if($preview!=false)
             $data['url'] = 'http://sample.url/';
