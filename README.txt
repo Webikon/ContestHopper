@@ -28,14 +28,27 @@ ContestHopper for WordPress is the easiest way to run social sweepstakes, contes
 * Easily add your own rules & disclaimer
 * Fully responsive design
 
+[Contest Hopper Plugin - User Documentation v0.5](http://www.webikon.sk/CH_User_Documentation_v0.5.pdf)
+
 == Installation ==
 
 1. Upload the entire `contesthopper` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Screenshots ==
-
-Not yet.
+ 
+1. Creating a New Contest
+2. Media Options
+3. Design Customization
+4. Widget settings
+5. Entries & Winners
+6. Timing
+7. Shortcode
+8. Live Preview Before Submit
+9. Live Preview After Submit
+10. Dashboard
+11. Participants
+12. Contests Listing
 
 == Frequently Asked Questions ==
 
@@ -104,3 +117,7 @@ Tiny fixes and added description.
 
 = 0.9 =
 Initial release.
+
+== Documentation ==
+ 
+[Contest Hopper Plugin - User Documentation v0.5](http://www.webikon.sk/CH_User_Documentation_v0.5.pdf)
