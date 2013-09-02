@@ -53,6 +53,7 @@ Yes. You can email me in this case.
 * Subscribers, contributors, authors and editors can no longer see contesthopper pages.
 * Fixed bug with "days remaining" box, will show correct number of days now.
 * Fixed deprecated code for WP 3.6.
+* Changed contest description filter to "ch_description".
 * Added option to set "from" email address.
 
 = 0.9.4 =
@@ -81,6 +82,7 @@ Yes. You can email me in this case.
 * Subscribers, contributors, authors and editors can no longer see contesthopper pages.
 * Fixed bug with "days remaining" box, will show correct number of days now.
 * Fixed deprecated code for WP 3.6.
+* Changed contest description filter to "ch_description".
 * Added option to set "from" email address.
 
 = 0.9.4 =

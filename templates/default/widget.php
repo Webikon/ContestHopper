@@ -105,7 +105,7 @@ echo CH_Widget::get_template('boxes');
 // media, description
 $media_data = CH_Widget::get_template('media');
 $media = '<div class="'.$media_css.'">'.$media_data.'</div>';
-$description = '<div class="'.$description_css.'" style="color: '.$description_color.';'.$description_align.$description_font.'">'.apply_filters('the_content', $description_text).'</div>';
+$description = '<div class="'.$description_css.'" style="color: '.$description_color.';'.$description_align.$description_font.'">'.apply_filters('ch_description', $description_text).'</div>';
 
 if($layout=='description-top')
     echo $description.$media;

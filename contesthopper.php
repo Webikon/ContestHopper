@@ -90,8 +90,10 @@ if(!class_exists('CH_Manager'))
             add_action('admin_menu', array(&$this, 'init_menu'), 9);
             
             add_action('contesthopper_autoexpiry', array(&$this, 'process_autoexpiry'));
+
+            add_filter('ch_description', 'do_shortcode');
         }
-        
+
         /**
         * Contest autoexpiry method.
         * Called on <i>contesthopper_autoexpiry</i> hook, that was registered by <i>wp_schedule_event()</i> on plugin install.
